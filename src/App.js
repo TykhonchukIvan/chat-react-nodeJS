@@ -1,21 +1,30 @@
 import React from 'react';
-import io from 'socket.io-client';
+import { createStore } from "redux";
+import { Provider } from 'react-redux'
+import rootReducer, { initState } from './redux/index'
+
+
+import Login from "./LogIn";
+
+// import Layout from "./hoc/Layout";
+
+
+const store = createStore(
+    rootReducer,
+    initState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 class App extends React.Component {
 
-    connectSocket(){
-        io();
-    }
-
     render() {
-        return(
-           <div>
-               <button onClick={this.connectSocket.bind(this)}>
-                   Connect
-               </button>
-           </div>
+        return (
+            <Provider store={store}>
+                <Login/>
+            </Provider>
         )
     }
 }
 
 export default App
+
+

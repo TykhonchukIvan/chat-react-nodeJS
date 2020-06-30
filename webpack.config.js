@@ -26,10 +26,10 @@ module.exports = {
     },
     devServer: {
         port: 5000,
-        proxy: {
-            context: () => true,
-            target: 'http://localhost:8888'
-        }
+        // proxy: {
+        //     context: () => true,
+        //     target: 'http://localhost:8888'
+        // }
     },
     plugins: [
         new HtmlWebpackPlugin({
