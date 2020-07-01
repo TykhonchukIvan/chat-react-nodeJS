@@ -1,9 +1,9 @@
 import {loginActionTypes} from "../actions/loginJs";
 
 export const loginInitialState = {
-    form: {
-        userName: '', roomId: '',
-    }
+    form: { userName: '', roomId: '', },
+    isAuthentication: false,
+
 }
 
 export default function (state = loginInitialState, action) {
@@ -19,8 +19,16 @@ export default function (state = loginInitialState, action) {
                }
             }
         }
+        case loginActionTypes.IS_AUTHENTICATION:{
+            return {
+                ...state,
+                isAuthentication: action.payload
+            }
+        }
+
         default: return state
     }
 }
 
 export const getLogInForm = state => state.form;
+export const getIsAuthentication = state => state.isAuthentication;
