@@ -26,6 +26,8 @@ app.post('/rooms', (req, res) => {
         );
     }
 
+    console.log(req.body)
+
     res.json();
 })
 

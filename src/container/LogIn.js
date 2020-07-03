@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback, useReducer} from 'react';
+import React from 'react';
 import axios from 'axios'
 import './LogIn.less'
 import socket from '../socketClient'
@@ -26,10 +26,15 @@ export function Login (props) {
             return;
         }
 
+        console.log(
+            'login', form.userName,
+            'roomId', form.roomId,
+        )
+
         axios.post('/rooms',{
             login: form.userName,
             roomId: form.roomId,
-        }).then(onLogin);
+        }).then(onLogin)
 
     }
 
