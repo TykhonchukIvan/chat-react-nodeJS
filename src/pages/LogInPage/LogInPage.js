@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 
+import socket from '../../socketClient';
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 
@@ -16,16 +17,19 @@ export const LoginForm = (props) => {
         setForm(inputName,inputValue)
     }
 
-    const onSend = () => {
+    const onSend =  () => {
 
         if (!form.userName || !form.roomId) {
             return;
         }
 
-        axios.post('/rooms',{
+        const data = {
             login: form.userName,
             roomId: form.roomId,
-        }).then(onLogin)
+        }
+
+        axios.post('/rooms',data).then(onLogin)
+
 
     }
 

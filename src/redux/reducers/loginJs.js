@@ -1,7 +1,10 @@
 import { loginActionTypes} from "../type/type";
 
 export const loginInitialState = {
-    form: { userName: '', roomId: '', },
+    form: {
+        userName: '',
+        roomId: '',
+    },
     isAuthentication: false,
 }
 

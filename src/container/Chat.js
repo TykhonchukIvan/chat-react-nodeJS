@@ -1,19 +1,22 @@
 import React from 'react';
 
-import socket from '../socketClient';
-import  LogInForm  from "../pages/LogInPage/index.js";
+import  LogInPage  from "../pages/LogInPage/index.js";
+import ChatPage from "../pages/ChatPage/index.js"
 
 import './Chat.less';
+
 
 export function Chat (props) {
 
     const { isAuthentication } = props
 
+
+
     return (
 
         <div className='wrapper'>
 
-            { !isAuthentication  && <LogInForm /> }
+            { !isAuthentication ? <LogInPage /> : <ChatPage/>}
 
         </div>
 

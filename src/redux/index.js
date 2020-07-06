@@ -1,4 +1,4 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import logInReducer, * as fromLogin from "./reducers/loginJs";
 
 export const initState = {
