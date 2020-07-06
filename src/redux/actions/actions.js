@@ -1,7 +1,4 @@
-export const loginActionTypes = {
-    SET_FORM: 'SET_FORM',
-    IS_AUTHENTICATION: 'IS_AUTHENTICATION',
-}
+import { loginActionTypes } from "../type/type";
 
 export const loginActions = {
     setForm: (name, value) => ({

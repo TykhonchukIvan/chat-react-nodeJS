@@ -1,9 +1,8 @@
-import {loginActionTypes} from "../actions/loginJs";
+import { loginActionTypes} from "../type/type";
 
 export const loginInitialState = {
     form: { userName: '', roomId: '', },
     isAuthentication: false,
-
 }
 
 export default function (state = loginInitialState, action) {
