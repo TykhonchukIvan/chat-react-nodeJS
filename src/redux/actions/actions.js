@@ -1,4 +1,5 @@
 import { loginActionTypes } from "../type/type";
+import { messagesActionTypes } from '../type/type';
 
 export const loginActions = {
     setForm: (name, value) => ({
@@ -8,5 +9,12 @@ export const loginActions = {
     onLogin:()=>({
         type: loginActionTypes.IS_AUTHENTICATION,
         payload: true
+    })
+}
+
+export const messagesActions = {
+    setMessages: (value) => ({
+        type: messagesActionTypes.SET_MESSAGES,
+        payload: value,
     })
 }

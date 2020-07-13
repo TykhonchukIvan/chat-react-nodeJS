@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect }  from 'react-redux';
-import { ChatPage } from "./ChatPage";
-import {getLoginForm} from "../../redux";
-
-
-const ChatPageContainer = props => <ChatPage {...props}/>
+import { ChatPage } from './ChatPage';
+import {getLoginForm, getMessagesText } from "../../redux";
+import { messagesActions } from '../../redux/actions/actions';
 
 const mapStateToProps = state => ({
     form: getLoginForm(state),
+    messages: getMessagesText(state),
 })
 const mapDispatchToProps = {
-
+    getMessages: messagesActions.setMessages,
 }
 
-export default connect(mapStateToProps)(ChatPageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

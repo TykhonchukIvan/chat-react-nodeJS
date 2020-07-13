@@ -25,8 +25,6 @@ app.post('/rooms', (req, res) => {
         ]),
         );
     }
-
-
     res.send();
 })
 
@@ -35,21 +33,13 @@ app.post('/rooms', (req, res) => {
 io.on('connection', (socket) => {
 
     socket.on('ROOM:JOIN', (data)=>{
-        console.log('bhbhbb', data)
 
         socket.join (data.roomId);
-
         rooms.get(data.roomId).get('users').set(socket.id, data.login )
-
-        console.log('set', rooms)
-
         const users = [...rooms.get(data.roomId).get('users').values()];
-
         socket.to(data.roomId).broadcast.emit('ROOM:JOINED', users);
 
-        console.log('users', users)
     });
-
 
     console.log('user connected', socket.id);
 

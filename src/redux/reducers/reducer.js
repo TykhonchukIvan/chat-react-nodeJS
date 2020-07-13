@@ -1,7 +1,7 @@
 import { loginActionTypes} from "../type/type";
 import { messagesActionTypes } from '../type/type';
 
-export const loginInitialState = {
+export const InitialState = {
     form: {
         userName: '',
         roomId: '',
@@ -10,7 +10,7 @@ export const loginInitialState = {
     isAuthentication: false,
 }
 
-export default function (state = loginInitialState, action) {
+export const loginReducer = (state = InitialState, action) =>{
     switch (action.type) {
 
         case loginActionTypes.SET_FORM: {
@@ -31,6 +31,13 @@ export default function (state = loginInitialState, action) {
             }
         }
 
+        default: return state
+    }
+}
+
+export const messagesReducer = (state = InitialState, action) =>{
+    switch (action.type) {
+
         case messagesActionTypes.SET_MESSAGES:{
             return {
                 ...state,
@@ -44,4 +51,3 @@ export default function (state = loginInitialState, action) {
 
 export const getLogInForm = state => state.form;
 export const getIsAuthentication = state => state.isAuthentication;
-export const getMessagesText = state => state.messageText;

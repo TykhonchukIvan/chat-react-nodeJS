@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from "axios";
 
-import socket from '../../socketClient';
 import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
+import Button from "../../components/ButtonLogIn/Button";
 
 import './LogInPage.less'
 
@@ -29,7 +28,6 @@ export const LoginForm = (props) => {
         }
 
         axios.post('/rooms',data).then(onLogin)
-
 
     }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import  LogInPage  from "../pages/LogInPage/index.js";
 import ChatPage from "../pages/ChatPage/index.js"
@@ -6,19 +6,17 @@ import ChatPage from "../pages/ChatPage/index.js"
 import './Chat.less';
 
 
-export function Chat (props) {
+export function ChatContainer (props) {
 
     const { isAuthentication } = props
 
-
-
     return (
 
-        <div className='wrapper'>
+        <Fragment>
+            {/*<ChatPage/>*/}
+            {/*{ !isAuthentication ? <LogInPage /> : <ChatPage/>}*/}
 
-            { !isAuthentication ? <LogInPage /> : <ChatPage/>}
-
-        </div>
+        </Fragment>
 
     )
 }
