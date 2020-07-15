@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect }  from 'react-redux';
-import { ChatPage } from './ChatPage';
+import { ChatPage } from './ChatPage.jsx';
 import {getLoginForm, getMessagesText } from "../../redux";
 import { messagesActions } from '../../redux/actions/actions';
 

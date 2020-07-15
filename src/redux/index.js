@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { loginReducer, messagesReducer, InitialState,  } from "./reducers/reducer";
+import {loginReducer, messagesReducer, InitialState, getReducer, getMessages} from "./reducers/reducer";
 
 export const initState = {
     login: InitialState,
@@ -10,6 +10,6 @@ export default combineReducers({
     messages: messagesReducer,
 })
 
-export const getLoginForm = state => fromLogin.getLogInForm(state.login)
-export const getIsAuthentication = state => fromLogin.getIsAuthentication(state.login)
-export const getMessagesText = state => fromLogin.getIsAuthentication(state.login)
+export const getLoginForm = state => getReducer.getLogInForm(state.login)
+export const getIsAuthentication = state => getReducer.getIsAuthentication(state.login)
+export const getMessagesText = state => getReducer.getMessages(state.messages)

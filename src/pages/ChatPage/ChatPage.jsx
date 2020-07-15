@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 
 import socket from "../../socketClient";
 
-import ButtonSendMessages from "../../components/ButtonSendMessages/ButtonSendMessages";
-import Textarea from "../../components/Textarea/Textarea";
+import ButtonSendMessages from "../../components/ButtonSendMessages";
+import Textarea from "../../components/Textarea";
+import UserOnline from '../../components/UserOnline';
 
 import './ChatPage.less';
 
@@ -25,6 +26,8 @@ export const ChatPage = (props) =>{
         });
     }, [])
 
+    console.log(messages);
+
 
     const onChangeHandlerTextarea = (event) =>{
         const inputTextarea = event.target.value
@@ -36,11 +39,11 @@ export const ChatPage = (props) =>{
 
         <div className='chat'>
             <div className='chat__body'>
-                <div></div>
+                <UserOnline />
                 <div></div>
             </div>
             <div className='chat__send'>
-                <Textarea onChange={onChangeHandlerTextarea}/>
+                <Textarea onChange={onChangeHandlerTextarea} value={messages} />
                 <ButtonSendMessages/>
             </div>
         </div>

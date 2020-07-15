@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from "axios";
 
-import Input from "../../components/Input/Input";
-import Button from "../../components/ButtonLogIn/Button";
+import Input from "../../components/Input";
+import Button from "../../components/ButtonLogIn";
 
 import './LogInPage.less'
 

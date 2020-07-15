@@ -48,6 +48,12 @@ export const messagesReducer = (state = InitialState, action) =>{
     }
 }
 
-
 export const getLogInForm = state => state.form;
 export const getIsAuthentication = state => state.isAuthentication;
+export const getMessages = state =>state.messageText;
+
+export const getReducer = {
+    getLogInForm,
+    getIsAuthentication,
+    getMessages,
+};
