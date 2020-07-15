@@ -1,5 +1,4 @@
-import { loginActionTypes} from "../type/type";
-import { messagesActionTypes } from '../type/type';
+import { loginActionTypes, messagesActionTypes, usersActionTypes} from "../type/type";
 
 export const InitialState = {
     form: {
@@ -8,6 +7,7 @@ export const InitialState = {
     },
     messageText: '',
     isAuthentication: false,
+    users: [],
 }
 
 export const loginReducer = (state = InitialState, action) =>{
@@ -48,12 +48,27 @@ export const messagesReducer = (state = InitialState, action) =>{
     }
 }
 
-export const getLogInForm = state => state.form;
-export const getIsAuthentication = state => state.isAuthentication;
-export const getMessages = state =>state.messageText;
+export const userReducer = (state = InitialState, action) =>{
+    switch (action.type) {
+
+        case usersActionTypes.SET_USERS:{
+            return {
+                ...state,
+                users: action.payload,
+            }
+        }
+        default: return state
+    }
+}
+
+const getLogInForm = state => state.form;
+const getIsAuthentication = state => state.isAuthentication;
+const getMessages = state =>state.messageText;
+const getUsers = state => state.users;
 
 export const getReducer = {
     getLogInForm,
     getIsAuthentication,
     getMessages,
+    getUsers,
 };

@@ -1,14 +1,20 @@
 import React from 'react';
-import './Button.less'
+import PropTypes from 'prop-types';
 
-const Button = (props) =>{
+import './Button.less';
+
+const Button = ({ onClick, text }) =>{
 
     return(
-        <div className='form-btn' onClick={props.onClick}>
-            {props.text}
+        <div className='form-btn' onClick={onClick}>
+            {text}
         </div>
     )
-
 }
 
-export default Button
+Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
+};
+
+export default Button;

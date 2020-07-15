@@ -13,8 +13,8 @@ export function ChatContainer (props) {
     return (
 
         <Fragment>
-            <ChatPage/>
-            {/*{ !isAuthentication ? <LogInPage /> : <ChatPage/>}*/}
+            {/*<ChatPage/>*/}
+            { !isAuthentication ? <LogInPage /> : <ChatPage/>}
 
         </Fragment>
 

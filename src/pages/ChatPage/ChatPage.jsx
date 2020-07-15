@@ -10,7 +10,7 @@ import './ChatPage.less';
 
 export const ChatPage = (props) =>{
 
-    const { form, messages, getMessages } = props;
+    const { form, messages, getMessages, users, setUsers } = props;
 
     const data = {
         login: form.userName,
@@ -23,10 +23,11 @@ export const ChatPage = (props) =>{
 
         socket.on('ROOM:JOINED', (users)=>{
             console.log('new users', users)
+            setUsers(users)
         });
     }, [])
 
-    console.log(messages);
+    console.log('redux users', users)
 
 
     const onChangeHandlerTextarea = (event) =>{
@@ -39,7 +40,7 @@ export const ChatPage = (props) =>{
 
         <div className='chat'>
             <div className='chat__body'>
-                <UserOnline />
+                <UserOnline users={users}/>
                 <div></div>
             </div>
             <div className='chat__send'>

@@ -1,5 +1,5 @@
-import { loginActionTypes } from "../type/type";
-import { messagesActionTypes } from '../type/type';
+import { loginActionTypes, messagesActionTypes, usersActionTypes } from "../type/type";
+
 
 export const loginActions = {
     setForm: (name, value) => ({
@@ -16,5 +16,12 @@ export const messagesActions = {
     setMessages: (value) => ({
         type: messagesActionTypes.SET_MESSAGES,
         payload: value,
-    })
+    }),
+}
+
+export const usersActions = {
+    setUsers: (value) => ({
+        type: usersActionTypes.SET_USERS,
+        payload: value
+    }),
 }

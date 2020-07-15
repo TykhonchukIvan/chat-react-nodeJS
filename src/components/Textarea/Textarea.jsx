@@ -1,6 +1,12 @@
 import React from 'react';
-import './Textarea.less'
+import PropTypes from 'prop-types';
+
+import './Textarea.less';
 
 const Textarea = props => <textarea className='chat__send-textarea' {...props}> </textarea>
 
-export default Textarea
+Textarea.propTypes = {
+  props: PropTypes.object.isRequired,
+}
+
+export default Textarea;
