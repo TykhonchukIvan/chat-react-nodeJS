@@ -6,7 +6,7 @@ const CssWebpackPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: path.join(__dirname,"dist"),
+        path: path.join(__dirname,"./server/dist"),
         filename: "bundle.js"
     },
     module: {
@@ -24,13 +24,16 @@ module.exports = {
             },
         ]
     },
-    devServer: {
-        port: 5000,
-        proxy: {
-            context: () => true,
-            target: 'http://localhost:8888'
-        }
-    },
+    // devServer: {
+    //     port: 5000,
+    //     proxy: {
+    //         context: () => true,
+    //         "/api": {
+    //             target: "http://localhost:8888",
+    //             pathRewrite: {"^/api" : ""}
+    //         }
+    //     }
+    // },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),

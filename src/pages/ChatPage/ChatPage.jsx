@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
 import socket from "../../socketClient";
 
@@ -17,27 +18,24 @@ export const ChatPage = (props) =>{
         roomId: form.roomId,
     }
 
-    useEffect(() => {
 
+    useEffect( () => {
         socket.emit('ROOM:JOIN', data);
+        socket.on('ROOM:SET_USERS', (users)=> { setUsers(users) });
 
-        socket.on('ROOM:JOINED', (users)=>{
-            console.log('new users', users)
-            setUsers(users)
-        });
-    }, [])
+        axios.get(`/rooms/${data.roomId}`).then(({data})=>{
+            setUsers(data.users)
+            console.log(data.users)
+        })
 
-    console.log('redux users', users)
-
+    }, []);
 
     const onChangeHandlerTextarea = (event) =>{
         const inputTextarea = event.target.value
         getMessages(inputTextarea)
     }
 
-
-    return(
-
+    return (
         <div className='chat'>
             <div className='chat__body'>
                 <UserOnline users={users}/>
@@ -49,4 +47,4 @@ export const ChatPage = (props) =>{
             </div>
         </div>
     )
-}
+};
