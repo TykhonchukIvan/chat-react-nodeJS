@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = {
     getMessages: messagesActions.setMessages,
+    setMassagesServer: messagesActions.setMassagesServer,
     setUsers: usersActions.setUsers,
 }
 

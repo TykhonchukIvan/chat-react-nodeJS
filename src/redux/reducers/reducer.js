@@ -6,8 +6,10 @@ export const InitialState = {
         roomId: '',
     },
     messageText: '',
+    messageServer: [],
     isAuthentication: false,
     users: [],
+
 }
 
 export const loginReducer = (state = InitialState, action) =>{
@@ -44,6 +46,15 @@ export const messagesReducer = (state = InitialState, action) =>{
                 messageText: action.payload,
             }
         }
+
+        case messagesActionTypes.SET_MESSAGES_SERVER:{
+            const { login, text } = action.payload
+            return  {
+                ...state,
+                messageServer: [{login, text}, ...state.messageServer]
+            }
+        }
+
         default: return state
     }
 }
@@ -67,11 +78,14 @@ export const userReducer = (state = InitialState, action) =>{
 const getLogInForm = state => state.form;
 const getIsAuthentication = state => state.isAuthentication;
 const getMessages = state =>state.messageText;
+const getMessagesServer = state =>state.messageServer;
 const getUsers = state => state.users;
+
 
 export const getReducer = {
     getLogInForm,
     getIsAuthentication,
     getMessages,
     getUsers,
+    getMessagesServer,
 };

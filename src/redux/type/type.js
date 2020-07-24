@@ -5,6 +5,7 @@ export const loginActionTypes = {
 
 export const messagesActionTypes = {
     SET_MESSAGES: 'SET_MESSAGES',
+    SET_MESSAGES_SERVER: 'SET_MESSAGES_SERVER',
 }
 
 export const usersActionTypes = {

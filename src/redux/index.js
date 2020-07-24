@@ -14,4 +14,5 @@ export default combineReducers({
 export const getLoginForm = state => getReducer.getLogInForm(state.login)
 export const getIsAuthentication = state => getReducer.getIsAuthentication(state.login)
 export const getMessagesText = state => getReducer.getMessages(state.messages)
+export const getMessagesTextServer = state => getReducer.getMessagesServer(state.messages)
 export const getUsers = state => getReducer.getUsers(state.users)

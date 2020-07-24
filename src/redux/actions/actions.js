@@ -17,6 +17,10 @@ export const messagesActions = {
         type: messagesActionTypes.SET_MESSAGES,
         payload: value,
     }),
+    setMassagesServer: (value) => ({
+        type: messagesActionTypes.SET_MESSAGES_SERVER,
+        payload: value,
+    })
 }
 
 export const usersActions = {

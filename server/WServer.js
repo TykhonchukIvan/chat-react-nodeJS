@@ -44,11 +44,10 @@ io.on('connection', (socket) => {
     socket.to(data.roomId).broadcast.emit('ROOM:SET_USERS', users);
   });
 
-  socket.on('ROOM:NEW_MESSAGE', ({ roomId, login, text }) => {
-
+  socket.on('ROOM:SET_NEW_MESSAGE', ({ roomId, login, text }) => {
     const odj = {login, text}
-    rooms.get(data.roomId).get('massages').push(odj);
-    socket.to(data.roomId).broadcast.emit('ROOM:NEW_MESSAGE', odj);
+    rooms.get(roomId).get('massages').push(odj);
+    socket.to(roomId).broadcast.emit('ROOM:GET_NEW_MESSAGE', odj);
   });
 
   socket.on('disconnect', () => {
