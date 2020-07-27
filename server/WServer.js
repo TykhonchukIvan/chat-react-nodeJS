@@ -44,8 +44,8 @@ io.on('connection', (socket) => {
     socket.to(data.roomId).broadcast.emit('ROOM:SET_USERS', users);
   });
 
-  socket.on('ROOM:SET_NEW_MESSAGE', ({ roomId, login, text }) => {
-    const odj = {login, text}
+  socket.on('ROOM:SET_NEW_MESSAGE', ({ roomId, login, text, time }) => {
+    const odj = {login, text, time}
     rooms.get(roomId).get('massages').push(odj);
     socket.to(roomId).broadcast.emit('ROOM:GET_NEW_MESSAGE', odj);
   });

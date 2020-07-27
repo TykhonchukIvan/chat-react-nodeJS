@@ -42,10 +42,10 @@ export const messagesReducer = (state = InitialState, action) =>{
             }
         }
         case messagesActionTypes.SET_MESSAGES_SERVER:{
-            const { login, text } = action.payload
+            const { login, text, time } = action.payload
             return  {
                 ...state,
-                messageServer: [{login, text}, ...state.messageServer]
+                messageServer: [{login, text, time}, ...state.messageServer]
             }
         }
         case messagesActionTypes.CLEAR_TEXTAREA:{

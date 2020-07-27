@@ -14,6 +14,9 @@ const Message = ({ massages }) => {
               Name: {message.login}
               </span>
             </div>
+            <div className='message-time'>
+              Time: {message.time}
+            </div>
             <div className='message-text'>
               Message: {message.text}
             </div>

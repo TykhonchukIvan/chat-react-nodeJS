@@ -30,16 +30,25 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
         getMessages(inputTextarea);
     }
 
+    const getTime = () => {
+        const data = new Date();
+        return data.getHours().toString() + ':' + data.getMinutes().toString()
+    }
+
+    const timeMessage = getTime()
+
     const dataMessage = {
         login: form.userName,
         roomId: form.roomId,
         text: messages,
+        time: timeMessage,
     }
 
     const onSendMessage = () =>{
+        getTime()
         socket.emit('ROOM:SET_NEW_MESSAGE', dataMessage);
-        const { login, text } = dataMessage;
-        setMassagesServer({login, text});
+        const { login, text, time } = dataMessage;
+        setMassagesServer({login, text, time});
         clear();
     }
 
