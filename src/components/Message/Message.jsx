@@ -5,17 +5,17 @@ import PropTypes from 'prop-types';
 const Message = ({ massages }) => {
 
   return (
-    <div className='messages'>
+    <div className='messages-container'>
       {
-        massages.map(massage => (
-          <div>
-            <p>
-              {massage.text}
-            </p>
-            <div>
+        massages.map(message => (
+          <div className='message'>
+            <div className='message-login'>
               <span>
-              {massage.login}
+              Name: {message.login}
               </span>
+            </div>
+            <div className='message-text'>
+              Message: {message.text}
             </div>
           </div>
         ))

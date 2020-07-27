@@ -1,6 +1,7 @@
 import React from 'react';
-import './ButtonSendMessages.less'
 import PropTypes from 'prop-types';
+
+import './ButtonSendMessages.less'
 
 const ButtonSendMessages = ({onClick}) =>{
     return(

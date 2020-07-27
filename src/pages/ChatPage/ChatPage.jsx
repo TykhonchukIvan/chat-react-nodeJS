@@ -47,9 +47,7 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
         <div className='chat'>
             <div className='chat__body'>
                 <UserOnline users={users}/>
-                <div>
-                    <MessagesContainer />
-                </div>
+                <MessagesContainer />
             </div>
             <div className='chat__send'>
                 <Textarea onChange={onChangeHandlerTextarea} value={messages} />
