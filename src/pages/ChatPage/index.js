@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect }  from 'react-redux';
-import { ChatPage } from './ChatPage.jsx';
+import ChatPage from './ChatPage.jsx';
 import {getLoginForm, getMessagesText, getUsers } from "../../redux";
 import { messagesActions, usersActions } from '../../redux/actions/actions';
 
@@ -13,6 +13,7 @@ const mapDispatchToProps = {
     getMessages: messagesActions.setMessages,
     setMassagesServer: messagesActions.setMassagesServer,
     setUsers: usersActions.setUsers,
+    clear: messagesActions.clearTextarea,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

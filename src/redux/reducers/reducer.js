@@ -9,12 +9,10 @@ export const InitialState = {
     messageServer: [],
     isAuthentication: false,
     users: [],
-
 }
 
 export const loginReducer = (state = InitialState, action) =>{
     switch (action.type) {
-
         case loginActionTypes.SET_FORM: {
             const { name, value } = action.payload
             return {
@@ -25,28 +23,24 @@ export const loginReducer = (state = InitialState, action) =>{
                }
             }
         }
-
         case loginActionTypes.IS_AUTHENTICATION:{
             return {
                 ...state,
                 isAuthentication: action.payload,
             }
         }
-
         default: return state
     }
 }
 
 export const messagesReducer = (state = InitialState, action) =>{
     switch (action.type) {
-
         case messagesActionTypes.SET_MESSAGES:{
             return {
                 ...state,
                 messageText: action.payload,
             }
         }
-
         case messagesActionTypes.SET_MESSAGES_SERVER:{
             const { login, text } = action.payload
             return  {
@@ -54,17 +48,18 @@ export const messagesReducer = (state = InitialState, action) =>{
                 messageServer: [{login, text}, ...state.messageServer]
             }
         }
-
+        case messagesActionTypes.CLEAR_TEXTAREA:{
+            return {
+                ...state,
+                messageText: action.payload,
+            }
+        }
         default: return state
     }
 }
 
-
-
-
 export const userReducer = (state = InitialState, action) =>{
     switch (action.type) {
-
         case usersActionTypes.SET_USERS:{
             return {
                 ...state,

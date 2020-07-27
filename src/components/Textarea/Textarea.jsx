@@ -7,6 +7,6 @@ const Textarea = props => <textarea className='chat__send-textarea' {...props}> 
 
 Textarea.propTypes = {
   props: PropTypes.object.isRequired,
-}
+};
 
 export default Textarea;

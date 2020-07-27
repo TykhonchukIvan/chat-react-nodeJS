@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from "axios";
 
 import Input from "../../components/Input";
@@ -6,9 +7,7 @@ import Button from "../../components/ButtonLogIn";
 
 import './LogInPage.less'
 
-export const LoginForm = (props) => {
-
-    const { form, setForm, onLogin } = props
+const LoginForm = ({ form, setForm, onLogin }) => {
 
     const onChangeHandlerForm = (e) =>{
         const inputName = e.target.name
@@ -17,18 +16,14 @@ export const LoginForm = (props) => {
     }
 
     const onSend =  () => {
-
         if (!form.userName || !form.roomId) {
             return;
         }
-
         const data = {
             login: form.userName,
             roomId: form.roomId,
         }
-
         axios.post('/rooms',data).then(onLogin)
-
     }
 
     return(
@@ -38,4 +33,12 @@ export const LoginForm = (props) => {
             <Button text={'Log in'} onClick={onSend}/>
         </div>
     )
-}
+};
+
+LoginForm.propTypes = {
+    form: PropTypes.object,
+    setForm: PropTypes.func.isRequired,
+    onLogin: PropTypes.func.isRequired,
+};
+
+export default LoginForm;
