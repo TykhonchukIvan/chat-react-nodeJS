@@ -2,8 +2,7 @@ import React from 'react';
 import './ButtonSendMessages.less'
 import PropTypes from 'prop-types';
 
-const ButtonSendMessages = (props) =>{
-  const { onClick } = props
+const ButtonSendMessages = ({onClick}) =>{
     return(
         <div className='chat__send-btn' onClick={onClick}>
             Send
@@ -12,7 +11,7 @@ const ButtonSendMessages = (props) =>{
 };
 
 ButtonSendMessages.propTypes = {
-
+  onClick: PropTypes.func.isRequired,
 };
 
-export default ButtonSendMessages
+export default ButtonSendMessages;

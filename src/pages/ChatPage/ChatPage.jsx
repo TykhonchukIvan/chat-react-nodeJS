@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-
 import socket from "../../socketClient";
+import PropTypes from 'prop-types';
 
 import ButtonSendMessages from "../../components/ButtonSendMessages";
 import Textarea from "../../components/Textarea";
@@ -10,9 +10,7 @@ import MessagesContainer from './MessagesContainer';
 
 import './ChatPage.less';
 
-export const ChatPage = (props) =>{
-
-    const { form, messages, getMessages, users, setUsers, setMassagesServer } = props;
+const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear }) =>{
 
     const data = {
         login: form.userName,
@@ -24,12 +22,12 @@ export const ChatPage = (props) =>{
         socket.on('ROOM:SET_USERS', (users)=> { setUsers(users) });
         axios.get(`/rooms/${data.roomId}`).then(({data})=>{
             setUsers(data.users)
-        })
+        });
     }, []);
 
     const onChangeHandlerTextarea = (event) =>{
-        const inputTextarea = event.target.value
-        getMessages(inputTextarea)
+        const inputTextarea = event.target.value;
+        getMessages(inputTextarea);
     }
 
     const dataMessage = {
@@ -39,9 +37,10 @@ export const ChatPage = (props) =>{
     }
 
     const onSendMessage = () =>{
-        socket.emit('ROOM:SET_NEW_MESSAGE', dataMessage)
+        socket.emit('ROOM:SET_NEW_MESSAGE', dataMessage);
         const { login, text } = dataMessage;
-        setMassagesServer({login, text})
+        setMassagesServer({login, text});
+        clear();
     }
 
     return (
@@ -49,7 +48,7 @@ export const ChatPage = (props) =>{
             <div className='chat__body'>
                 <UserOnline users={users}/>
                 <div>
-                    <MessagesContainer/>
+                    <MessagesContainer />
                 </div>
             </div>
             <div className='chat__send'>
@@ -59,3 +58,15 @@ export const ChatPage = (props) =>{
         </div>
     )
 };
+
+ChatPage.propTypes = {
+    form: PropTypes.object,
+    messages: PropTypes.string,
+    getMessages: PropTypes.func.isRequired,
+    users: PropTypes.object,
+    setUsers: PropTypes.func.isRequired,
+    setMassagesServer: PropTypes.func.isRequired,
+    clear: PropTypes.func.isRequired,
+};
+
+export default ChatPage;

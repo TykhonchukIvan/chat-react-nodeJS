@@ -1,9 +1,8 @@
 import React from 'react';
 import './Message.less'
+import PropTypes from 'prop-types';
 
-const Message = (props) => {
-
-  const { massages } = props
+const Message = ({ massages }) => {
 
   return (
     <div className='messages'>
@@ -24,4 +23,9 @@ const Message = (props) => {
     </div>
   )
 }
-export default Message
+
+Message.propTypes = {
+  massages: PropTypes.object.isRequired,
+};
+
+export default Message;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChatContainer } from "./Chat.jsx";
+import ChatContainer from "./Chat.jsx";
 import { connect }  from 'react-redux';
 import { getIsAuthentication } from "../redux";
 

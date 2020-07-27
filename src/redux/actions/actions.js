@@ -9,10 +9,14 @@ export const loginActions = {
     onLogin:()=>({
         type: loginActionTypes.IS_AUTHENTICATION,
         payload: true
-    })
+    }),
 }
 
 export const messagesActions = {
+    clearTextarea: () => ({
+        type: messagesActionTypes.CLEAR_TEXTAREA,
+        payload: '',
+    }),
     setMessages: (value) => ({
         type: messagesActionTypes.SET_MESSAGES,
         payload: value,
@@ -20,7 +24,7 @@ export const messagesActions = {
     setMassagesServer: (value) => ({
         type: messagesActionTypes.SET_MESSAGES_SERVER,
         payload: value,
-    })
+    }),
 }
 
 export const usersActions = {
