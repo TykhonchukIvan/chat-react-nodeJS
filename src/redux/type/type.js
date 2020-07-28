@@ -1,6 +1,7 @@
 export const loginActionTypes = {
     SET_FORM: 'SET_FORM',
     IS_AUTHENTICATION: 'IS_AUTHENTICATION',
+    SEND_FORM_SAGA: 'SEND_FORM_SAGA',
 }
 
 export const messagesActionTypes = {

@@ -7,7 +7,7 @@ import Message from '../../../components/Message';
 const MessagesContainer = ({ messages, setMassagesServer }) => {
 
   useEffect(()=>{
-    socket.on('ROOM:GET_NEW_MESSAGE', (message)=>{ console.log(message) })
+    socket.on('ROOM:GET_NEW_MESSAGE', (message)=>{ setMassagesServer(message) })
   },[])
 
   return(

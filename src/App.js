@@ -1,17 +1,24 @@
 import React from 'react';
-import { createStore } from "redux";
-import { Provider } from 'react-redux'
-import rootReducer, { initState } from './redux/index'
+import { Provider } from 'react-redux';
+import rootReducer, { initState } from './redux/index';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddlewere from 'redux-saga';
+import rootSaga from './redux/saga/rootSaga';
 
 import ChatContainer from "./container";
 
-const store = createStore(
+const sagaMiddleware = createSagaMiddlewere();
+
+const store = createStore (
     rootReducer,
     initState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    composeWithDevTools( applyMiddleware(sagaMiddleware))
+);
+
+sagaMiddleware.run(rootSaga);
 
 class App extends React.Component {
-
     render() {
         return (
             <Provider store={store}>
@@ -21,6 +28,4 @@ class App extends React.Component {
     }
 }
 
-export default App
-
-
+export default App;

@@ -1,35 +1,39 @@
-import { loginActionTypes, messagesActionTypes, usersActionTypes } from "../type/type";
+import {loginActionTypes, messagesActionTypes, usersActionTypes} from "../type/type";
 
 
 export const loginActions = {
-    setForm: (name, value) => ({
-        type: loginActionTypes.SET_FORM,
-        payload: { name, value }
-    }),
-    onLogin:()=>({
-        type: loginActionTypes.IS_AUTHENTICATION,
-        payload: true
-    }),
+  setForm: (name, value) => ({
+    type: loginActionTypes.SET_FORM,
+    payload: {name, value}
+  }),
+  onLogin: () => ({
+    type: loginActionTypes.IS_AUTHENTICATION,
+    payload: true
+  }),
+  sendFormSaga: (name, value) => ({
+    type: loginActionTypes.SEND_FORM_SAGA,
+    payload: {name, value}
+  })
 }
 
 export const messagesActions = {
-    clearTextarea: () => ({
-        type: messagesActionTypes.CLEAR_TEXTAREA,
-        payload: '',
-    }),
-    setMessages: (value) => ({
-        type: messagesActionTypes.SET_MESSAGES,
-        payload: value,
-    }),
-    setMassagesServer: (value) => ({
-        type: messagesActionTypes.SET_MESSAGES_SERVER,
-        payload: value,
-    }),
+  clearTextarea: () => ({
+    type: messagesActionTypes.CLEAR_TEXTAREA,
+    payload: '',
+  }),
+  setMessages: (value) => ({
+    type: messagesActionTypes.SET_MESSAGES,
+    payload: value,
+  }),
+  setMassagesServer: (value) => ({
+    type: messagesActionTypes.SET_MESSAGES_SERVER,
+    payload: value,
+  }),
 }
 
 export const usersActions = {
-    setUsers: (value) => ({
-        type: usersActionTypes.SET_USERS,
-        payload: value
-    }),
+  setUsers: (value) => ({
+    type: usersActionTypes.SET_USERS,
+    payload: value
+  }),
 }

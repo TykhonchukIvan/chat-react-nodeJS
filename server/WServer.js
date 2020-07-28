@@ -27,7 +27,6 @@ app.post('/rooms', (req, res) => {
 
 app.get('/rooms/:id',  (req, res) => {
   const { id: roomId } = req.params;
-  console.log(roomId);
   const obj = rooms.has(roomId) ? {
     users: [...rooms.get(roomId).get('users').values()],
     massages: [...rooms.get(roomId).get('massages').values()],
@@ -58,9 +57,6 @@ io.on('connection', (socket) => {
       }
     });
   });
-
-  // console.log('user connected', socket.id);
-
 })
 
 server.listen(8888, (err) => {
