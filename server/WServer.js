@@ -22,8 +22,16 @@ app.post('/rooms', (req, res) => {
       ]),
     );
   }
-  res.send();
+  const respons = {respons: 'true'}
+  res.send(respons);
 })
+
+// app.post('/test', (req, res) => {
+//   const data = req.body
+//   console.log(data)
+//   const datares = {test:'otvet'}
+//   res.send(datares);
+// })
 
 app.get('/rooms/:id',  (req, res) => {
   const { id: roomId } = req.params;

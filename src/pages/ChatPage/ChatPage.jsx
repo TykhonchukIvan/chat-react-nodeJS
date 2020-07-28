@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import socket from "../../socketClient";
 import PropTypes from 'prop-types';
 
@@ -10,7 +9,7 @@ import MessagesContainer from './MessagesContainer';
 
 import './ChatPage.less';
 
-const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear }) =>{
+const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear, setUsersServer }) =>{
 
     const data = {
         login: form.userName,
@@ -18,11 +17,10 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
     }
 
     useEffect( () => {
+        console.log('aaa')
         socket.emit('ROOM:JOIN', data);
         socket.on('ROOM:SET_USERS', (users)=> { setUsers(users) });
-        axios.get(`/rooms/${data.roomId}`).then(({data})=>{
-            setUsers(data.users)
-        });
+        setUsersServer(data.roomId);
     }, []);
 
     const onChangeHandlerTextarea = (event) =>{
@@ -73,6 +71,7 @@ ChatPage.propTypes = {
     users: PropTypes.object,
     setUsers: PropTypes.func.isRequired,
     setMassagesServer: PropTypes.func.isRequired,
+    setUsersServer: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
 };
 

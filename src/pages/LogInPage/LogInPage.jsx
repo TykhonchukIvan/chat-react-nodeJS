@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from "axios";
 
 import Input from "../../components/Input";
 import Button from "../../components/ButtonLogIn";
 
 import './LogInPage.less'
 
-const LoginForm = ({ form, setForm, onLogin }) => {
+const LoginForm = ({ form, setForm, sendFormSaga }) => {
 
     const onChangeHandlerForm = (e) =>{
         const inputName = e.target.name
@@ -23,7 +22,7 @@ const LoginForm = ({ form, setForm, onLogin }) => {
             login: form.userName,
             roomId: form.roomId,
         }
-        axios.post('/rooms',data).then(onLogin)
+        sendFormSaga(data)
     }
 
     return(
@@ -38,7 +37,7 @@ const LoginForm = ({ form, setForm, onLogin }) => {
 LoginForm.propTypes = {
     form: PropTypes.object,
     setForm: PropTypes.func.isRequired,
-    onLogin: PropTypes.func.isRequired,
+    sendFormSaga: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = {
     setForm: loginActions.setForm,
-    onLogin: loginActions.onLogin,
+    sendFormSaga: loginActions.sendFormSaga,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer);

@@ -1,10 +1,9 @@
 import { all, takeLatest } from 'redux-saga/effects';
+import {sagaREST} from './sagaREST';
 
 function* rootSaga() {
   yield all([
-    takeLatest('SOCIAL_LOGIN_SAGA', function* () {
-      yield console.log('hello')
-    }),
+    ...sagaREST,
   ]);
 }
 

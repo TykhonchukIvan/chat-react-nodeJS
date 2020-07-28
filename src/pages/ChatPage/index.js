@@ -13,6 +13,7 @@ const mapDispatchToProps = {
     getMessages: messagesActions.setMessages,
     setMassagesServer: messagesActions.setMassagesServer,
     setUsers: usersActions.setUsers,
+    setUsersServer: usersActions.setUsersServer,
     clear: messagesActions.clearTextarea,
 }
 

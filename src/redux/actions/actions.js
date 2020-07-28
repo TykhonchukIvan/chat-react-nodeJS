@@ -4,15 +4,15 @@ import {loginActionTypes, messagesActionTypes, usersActionTypes} from "../type/t
 export const loginActions = {
   setForm: (name, value) => ({
     type: loginActionTypes.SET_FORM,
-    payload: {name, value}
+    payload: {name, value},
   }),
   onLogin: () => ({
     type: loginActionTypes.IS_AUTHENTICATION,
-    payload: true
+    payload: true,
   }),
-  sendFormSaga: (name, value) => ({
+  sendFormSaga: (data) => ({
     type: loginActionTypes.SEND_FORM_SAGA,
-    payload: {name, value}
+    payload: data,
   })
 }
 
@@ -34,6 +34,10 @@ export const messagesActions = {
 export const usersActions = {
   setUsers: (value) => ({
     type: usersActionTypes.SET_USERS,
-    payload: value
+    payload: value,
+  }),
+  setUsersServer: (value) => ({
+    type: usersActionTypes.SET_USERS_SAGA,
+    payload: value,
   }),
 }
