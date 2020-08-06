@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import socket from "../../socketClient";
 import PropTypes from 'prop-types';
 
@@ -10,7 +9,9 @@ import MessagesContainer from './MessagesContainer';
 
 import './ChatPage.less';
 
-const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear }) =>{
+const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear, setUsersServer, setUsersSaga }) =>{
+
+    const [error, serError] = useState(false)
 
     const data = {
         login: form.userName,
@@ -18,11 +19,9 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
     }
 
     useEffect( () => {
-        socket.emit('ROOM:JOIN', data);
+        setUsersSaga(data);
         socket.on('ROOM:SET_USERS', (users)=> { setUsers(users) });
-        axios.get(`/rooms/${data.roomId}`).then(({data})=>{
-            setUsers(data.users)
-        });
+        setUsersServer(data.roomId);
     }, []);
 
     const onChangeHandlerTextarea = (event) =>{
@@ -30,17 +29,32 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
         getMessages(inputTextarea);
     }
 
+    const getTime = () => {
+        const data = new Date();
+        return data.getHours().toString() + ':' + data.getMinutes().toString()
+    }
+
+    const timeMessage = getTime()
+
     const dataMessage = {
         login: form.userName,
         roomId: form.roomId,
         text: messages,
+        time: timeMessage,
     }
 
     const onSendMessage = () =>{
+        getTime()
         socket.emit('ROOM:SET_NEW_MESSAGE', dataMessage);
-        const { login, text } = dataMessage;
-        setMassagesServer({login, text});
-        clear();
+        const { login, text, time } = dataMessage;
+        if (text.length <= 0 ){
+            serError(true)
+            return
+        } else {
+            serError(false)
+            setMassagesServer({login, text, time});
+            clear();
+        }
     }
 
     return (
@@ -50,7 +64,7 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesSer
                 <MessagesContainer />
             </div>
             <div className='chat__send'>
-                <Textarea onChange={onChangeHandlerTextarea} value={messages} />
+                <Textarea onChange={onChangeHandlerTextarea} value={messages}  style = { error ? {border: '2px solid red'} : {border: '2px solid #4a87e5'}}/>
                 <ButtonSendMessages onClick={onSendMessage}/>
             </div>
         </div>
@@ -64,6 +78,7 @@ ChatPage.propTypes = {
     users: PropTypes.object,
     setUsers: PropTypes.func.isRequired,
     setMassagesServer: PropTypes.func.isRequired,
+    setUsersServer: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
 };
 

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from "axios";
 
 import Input from "../../components/Input";
 import Button from "../../components/ButtonLogIn";
 
 import './LogInPage.less'
 
-const LoginForm = ({ form, setForm, onLogin }) => {
+const LoginForm = ({ form, setForm, sendFormSaga }) => {
+
+    const [error, serError] = useState(false)
 
     const onChangeHandlerForm = (e) =>{
         const inputName = e.target.name
@@ -16,20 +17,32 @@ const LoginForm = ({ form, setForm, onLogin }) => {
     }
 
     const onSend =  () => {
-        if (!form.userName || !form.roomId) {
+        if (form.userName.length < 5 || form.roomId.length < 5) {
+            serError(true)
             return;
+        } else {
+            const data = {
+                login: form.userName,
+                roomId: form.roomId,
+            }
+            sendFormSaga(data)
         }
-        const data = {
-            login: form.userName,
-            roomId: form.roomId,
-        }
-        axios.post('/rooms',data).then(onLogin)
     }
 
     return(
         <div className='login-form'>
-            <Input placeholder={'Login'} value={form.userName} onChange={onChangeHandlerForm} name={'userName'}/>
-            <Input placeholder={'Room'} value={form.roomId} onChange={onChangeHandlerForm} name={'roomId'}/>
+            <Input placeholder={'Login'}
+                   value={form.userName}
+                   onChange={onChangeHandlerForm}
+                   name={'userName'}
+                   style = { error ? {border: '1px solid red'} : {}}
+            />
+            <Input placeholder={'Room'}
+                   value={form.roomId}
+                   onChange={onChangeHandlerForm}
+                   name={'roomId'}
+                   style = { error ? {border: '1px solid red'} : {}}
+            />
             <Button text={'Log in'} onClick={onSend}/>
         </div>
     )
@@ -38,7 +51,7 @@ const LoginForm = ({ form, setForm, onLogin }) => {
 LoginForm.propTypes = {
     form: PropTypes.object,
     setForm: PropTypes.func.isRequired,
-    onLogin: PropTypes.func.isRequired,
+    sendFormSaga: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
