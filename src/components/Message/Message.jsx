@@ -1,22 +1,26 @@
 import React from 'react';
 import './Message.less'
+import PropTypes from 'prop-types';
 
-const Message = (props) => {
-
-  const { massages } = props
+const Message = ({ massages }) => {
 
   return (
-    <div className='messages'>
+    <div className='messages-container'>
       {
-        massages.map(massage => (
-          <div>
-            <p>
-              {massage.text}
-            </p>
-            <div>
-              <span>
-              {massage.login}
-              </span>
+        massages.map(message => (
+          <div className='message_wrapper'>
+            <div className='message_wrapper-name'>
+              <div className='message_wrapper-login'>
+                <span>
+                Name: {message.login}
+                </span>
+              </div>
+              <div className='message_wrapper-time'>
+                Time: {message.time}
+              </div>
+            </div>
+            <div className='message_wrapper-text'>
+                {message.text}
             </div>
           </div>
         ))
@@ -24,4 +28,9 @@ const Message = (props) => {
     </div>
   )
 }
-export default Message
+
+Message.propTypes = {
+  massages: PropTypes.object.isRequired,
+};
+
+export default Message;

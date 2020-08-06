@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect }  from 'react-redux';
-import { LoginForm } from "./LogInPage.jsx";
+import LoginForm from "./LogInPage.jsx";
 import { getLoginForm } from "../../redux";
 import { loginActions } from "../../redux/actions/actions";
 
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = {
     setForm: loginActions.setForm,
-    onLogin: loginActions.onLogin,
+    sendFormSaga: loginActions.sendFormSaga,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer);

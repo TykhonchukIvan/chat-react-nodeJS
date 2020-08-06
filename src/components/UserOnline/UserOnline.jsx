@@ -6,7 +6,9 @@ import './UserOnline.less';
 const UserOnline = ({ users }) => {
   return (
     <div className='usersOnlineBody'>
-      <b>Online: {users.length}</b>
+      <div className='usersOnlineBody-title'>
+        Online: {users.length}
+      </div>
       <ul>
         {users.map((name, index) => (<li key={index}>{name}</li>))}
       </ul>
