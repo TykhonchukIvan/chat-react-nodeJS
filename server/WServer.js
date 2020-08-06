@@ -26,13 +26,6 @@ app.post('/rooms', (req, res) => {
   res.send(respons);
 })
 
-// app.post('/test', (req, res) => {
-//   const data = req.body
-//   console.log(data)
-//   const datares = {test:'otvet'}
-//   res.send(datares);
-// })
-
 app.get('/rooms/:id',  (req, res) => {
   const { id: roomId } = req.params;
   const obj = rooms.has(roomId) ? {
@@ -46,6 +39,7 @@ io.on('connection', (socket) => {
 
   socket.on('ROOM:JOIN', (data) => {
     socket.join(data.roomId);
+    console.log(data);
     rooms.get(data.roomId).get('users').set(socket.id, data.login);
     const users = [...rooms.get(data.roomId).get('users').values()];
     socket.to(data.roomId).broadcast.emit('ROOM:SET_USERS', users);

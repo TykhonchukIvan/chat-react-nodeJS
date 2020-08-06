@@ -1,4 +1,4 @@
-import {all, call, put, takeLatest} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { loginActionTypes, usersActionTypes } from '../type/type';
 import { loginActions, usersActions } from '../actions/actions';
 import axios from "axios";

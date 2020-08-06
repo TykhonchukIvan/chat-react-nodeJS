@@ -13,4 +13,6 @@ export const messagesActionTypes = {
 export const usersActionTypes = {
     SET_USERS: 'SET_USERS',
     SET_USERS_SAGA: 'SET_USERS_SAGA',
+    SET_USERS_WS_SAGA: 'SET_USERS_WS_SAGA',
+    GET_USERS_WS_SAGA: 'GET_USERS_WS_SAGA',
 }

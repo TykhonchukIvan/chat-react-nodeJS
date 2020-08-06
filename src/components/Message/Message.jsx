@@ -8,17 +8,19 @@ const Message = ({ massages }) => {
     <div className='messages-container'>
       {
         massages.map(message => (
-          <div className='message'>
-            <div className='message-login'>
-              <span>
-              Name: {message.login}
-              </span>
+          <div className='message_wrapper'>
+            <div className='message_wrapper-name'>
+              <div className='message_wrapper-login'>
+                <span>
+                Name: {message.login}
+                </span>
+              </div>
+              <div className='message_wrapper-time'>
+                Time: {message.time}
+              </div>
             </div>
-            <div className='message-time'>
-              Time: {message.time}
-            </div>
-            <div className='message-text'>
-              Message: {message.text}
+            <div className='message_wrapper-text'>
+                {message.text}
             </div>
           </div>
         ))
