@@ -15,7 +15,6 @@ const mapDispatchToProps = {
     setUsers: usersActions.setUsers,
     setUsersServer: usersActions.setUsersServer,
     setUsersSaga: usersActions.setUsersSaga,
-    getUsersSaga: usersActions.getUsersSaga,
     clear: messagesActions.clearTextarea,
 }
 

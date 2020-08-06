@@ -42,11 +42,6 @@ export const usersActions = {
     payload: value,
   }),
 
-  getUsersSaga: (value) => ({
-    type: usersActionTypes.GET_USERS_WS_SAGA,
-    payload: value,
-  }),
-
   setUsersServer: (value) => ({
     type: usersActionTypes.SET_USERS_SAGA,
     payload: value,

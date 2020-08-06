@@ -9,7 +9,7 @@ import MessagesContainer from './MessagesContainer';
 
 import './ChatPage.less';
 
-const ChatPage = ({ form, messages, getMessages, users, setUsers, getUsersSaga,  setMassagesServer, clear, setUsersServer, setUsersSaga }) =>{
+const ChatPage = ({ form, messages, getMessages, users, setUsers, setMassagesServer, clear, setUsersServer, setUsersSaga }) =>{
 
     const [error, serError] = useState(false)
 
@@ -21,7 +21,6 @@ const ChatPage = ({ form, messages, getMessages, users, setUsers, getUsersSaga, 
     useEffect( () => {
         setUsersSaga(data);
         socket.on('ROOM:SET_USERS', (users)=> { setUsers(users) });
-        getUsersSaga();
         setUsersServer(data.roomId);
     }, []);
 
